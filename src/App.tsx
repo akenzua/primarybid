@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import { Login } from "./pages/login/Login";
+import { Categories } from "./pages/categories/Categories";
+import { Products } from "./pages/products/Products";
+import { Navbar } from "./components/Navbar";
+
+import { CartProvider } from "./context/cartContext";
+import { AuthProvider } from "./context/authContext";
+import { ProtectedRoutes } from "./components/ProtectedRoutes";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <CartProvider>
+        <Navbar />
+        <Container className="mb-4">
+          <Routes>
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/categories/:category" element={<Products />} />
+            </Route>
+            <Route path="/" element={<Login />} />
+            <Route path="*" element={<p>There's nothing here: 404!</p>} />
+          </Routes>
+        </Container>
+      </CartProvider>
+    </AuthProvider>
   );
 }
 
