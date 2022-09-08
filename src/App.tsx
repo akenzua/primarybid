@@ -4,10 +4,9 @@ import { Login } from "./pages/login/Login";
 import { Categories } from "./pages/categories/Categories";
 import { Products } from "./pages/products/Products";
 import { Navbar } from "./components/Navbar";
-
+import { ProtectedRoutes } from "./pages/ProtectedRoutes";
 import { CartProvider } from "./context/cartContext";
 import { AuthProvider } from "./context/authContext";
-import { ProtectedRoutes } from "./components/ProtectedRoutes";
 
 function App() {
   return (

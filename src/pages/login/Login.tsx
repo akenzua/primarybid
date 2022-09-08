@@ -39,7 +39,7 @@ export function Login() {
   useEffect(() => {
     if (!isAuthenticated) {
       const token: { token: string } = JSON.parse(
-        localStorage.getItem("token")
+        localStorage.getItem("token") || "{}"
       );
 
       if (token.token) {
