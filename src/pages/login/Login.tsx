@@ -16,9 +16,18 @@ export function Login() {
     {} as TokenProps
   );
   const { isAuthenticated, setIsAuthenticated } = useAuth();
+  const [isValid, setIsValid] = useState(true);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    // valid username and password
+    // this is a simple validation
+    // in production i would use a library like yup
+
+    if (username === "" && password === "") {
+      setIsValid(false);
+      return;
+    }
 
     fetch("https://fakestoreapi.com/auth/login", {
       method: "POST",
@@ -66,6 +75,7 @@ export function Login() {
           className="form-control"
           placeholder="Enter username"
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
       </div>
       <div className="mb-3">
@@ -75,9 +85,11 @@ export function Login() {
           type="password"
           className="form-control"
           placeholder="Enter password"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(event) => setPassword(event.target.value)}
+          required
         />
       </div>
+      {!isValid && <p>Please Enter username and password</p>}
 
       <div className="d-grid">
         <button type="submit" className="btn btn-primary">
