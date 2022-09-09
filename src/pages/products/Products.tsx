@@ -10,7 +10,7 @@ type Rating = {
   rate: number;
 };
 
-type Product = {
+type ProductProps = {
   id: number;
   category: string;
   description: string;
@@ -24,7 +24,7 @@ export function Products() {
   const { category } = useParams();
 
   const productsUrl = `https://fakestoreapi.com/products/category/${category}`;
-  const { data, loading, hasError } = useFetch<Product>(productsUrl);
+  const { data, loading, hasError } = useFetch<ProductProps>(productsUrl);
 
   if (hasError) {
     return <p>Sorry, something went wrong</p>;

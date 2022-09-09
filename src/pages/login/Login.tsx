@@ -11,7 +11,10 @@ type TokenProps = {
 export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [, setToken] = useLocalStorage<TokenProps>("token", {} as TokenProps);
+  const [token, setToken] = useLocalStorage<TokenProps>(
+    "token",
+    {} as TokenProps
+  );
   const { isAuthenticated, setIsAuthenticated } = useAuth();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -46,7 +49,7 @@ export function Login() {
         setIsAuthenticated(true);
       }
     }
-  }, [isAuthenticated]);
+  }, [token, isAuthenticated, setIsAuthenticated]);
 
   if (isAuthenticated) {
     return <Navigate to="/categories" />;

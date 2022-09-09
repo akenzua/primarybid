@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
 
-type UseFetchProps = {
-  url: string;
-};
-
 export function useFetch<T>(url: string) {
   const [data, setData] = useState<T[]>();
   const [loading, setLoading] = useState(true);
@@ -15,7 +11,7 @@ export function useFetch<T>(url: string) {
       .then((data) => setData(data))
       .catch((error) => setHasError(true));
     setLoading(false);
-  }, []);
+  }, [data, hasError, loading, url]);
 
   return { data, loading, hasError };
 }
