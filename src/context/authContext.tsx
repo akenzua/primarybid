@@ -11,7 +11,7 @@ type AuthContextProps = {
   isAuthenticated: boolean;
   setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
 };
-const AuthContext = createContext({} as AuthContextProps);
+export const AuthContext = createContext({} as AuthContextProps);
 
 type AuthProviderProps = {
   children: ReactNode;

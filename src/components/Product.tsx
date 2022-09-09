@@ -2,11 +2,6 @@ import { Button, Card } from "react-bootstrap";
 import { useCart } from "../context/cartContext";
 import { formatCurrency } from "../utils/formatCurrency";
 
-type Rating = {
-  count: number;
-  rate: number;
-};
-
 type ProductProps = {
   id: number;
   category: string;
@@ -14,20 +9,10 @@ type ProductProps = {
   image: string;
   price: number;
   title: string;
-  rating: Rating;
 };
 
-export function Product({
-  id,
-  category,
-  description,
-  image,
-  price,
-  title,
-  rating,
-}: ProductProps) {
-  const { addToCart, removeFromCart, getProductQuantity, clearCart } =
-    useCart();
+export function Product({ id, image, price, title }: ProductProps) {
+  const { addToCart, removeFromCart, getProductQuantity } = useCart();
   const quantity = getProductQuantity(id);
   return (
     <Card className="h-100">
@@ -71,7 +56,6 @@ export function Product({
                   +
                 </Button>
               </div>
-              <Button>Remove</Button>
             </div>
           )}
         </div>

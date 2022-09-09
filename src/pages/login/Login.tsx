@@ -53,20 +53,22 @@ export function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} aria-label="login-form">
       <h3>Sign In</h3>
       <div className="mb-3">
-        <label>Email address</label>
+        <label htmlFor="username">Username</label>
         <input
+          id="username"
           type="text"
           className="form-control"
-          placeholder="Enter email"
+          placeholder="Enter username"
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
       <div className="mb-3">
-        <label>Password</label>
+        <label htmlFor="password">Password</label>
         <input
+          id="password"
           type="password"
           className="form-control"
           placeholder="Enter password"

@@ -21,7 +21,7 @@ type CartItem = {
   quantity: number;
 };
 
-const CartContext = createContext({} as CartContextProps);
+export const CartContext = createContext({} as CartContextProps);
 export function useCart() {
   return useContext(CartContext);
 }
@@ -29,7 +29,7 @@ export function useCart() {
 export function CartProvider({ children }: CartPtoviderProps) {
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("cart", []);
 
-  const [cartOpen, setCartOpen] = useState(false);
+  const [, setCartOpen] = useState(false);
 
   const openCart = () => setCartOpen(true);
   const closeCart = () => setCartOpen(false);
