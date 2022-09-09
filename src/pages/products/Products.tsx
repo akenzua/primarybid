@@ -23,7 +23,7 @@ type ProductProps = {
 export function Products() {
   const { category } = useParams();
 
-  const productsUrl = `https://fakestoreapi.com/products/category/${category}`;
+  const productsUrl = `${process.env.REACT_APP_FAKE_API_BASE_URL}/products/category/${category}`;
   const { data, loading, hasError } = useFetch<ProductProps>(productsUrl);
 
   if (hasError) {

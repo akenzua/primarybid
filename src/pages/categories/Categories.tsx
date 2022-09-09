@@ -4,7 +4,7 @@ import { Loading } from "../../components/Loading";
 import { useFetch } from "../../hooks/useFetch";
 
 export function Categories() {
-  const categoriesUrl = "https://fakestoreapi.com/products/categories";
+  const categoriesUrl = `${process.env.REACT_APP_FAKE_API_BASE_URL}/products/categories`;
   const { data, loading, hasError } = useFetch<string>(categoriesUrl);
 
   if (hasError) {

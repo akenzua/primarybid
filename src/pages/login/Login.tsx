@@ -22,14 +22,16 @@ export function Login() {
     event.preventDefault();
     // valid username and password
     // this is a simple validation
-    // in production i would use a library like yup
+    // in production i would use a library
 
     if (username === "" && password === "") {
       setIsValid(false);
       return;
     }
 
-    fetch("https://fakestoreapi.com/auth/login", {
+    const authUrl = `${process.env.REACT_APP_FAKE_API_BASE_URL}/auth/login`;
+
+    fetch(authUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
