@@ -11,7 +11,7 @@ export function useFetch<T>(url: string) {
       .then((data) => setData(data))
       .catch((error) => setHasError(true));
     setLoading(false);
-  }, [data, hasError, loading, url]);
+  }, []);
 
   return { data, loading, hasError };
 }

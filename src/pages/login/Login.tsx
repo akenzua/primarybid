@@ -17,6 +17,7 @@ export function Login() {
   );
   const { isAuthenticated, setIsAuthenticated } = useAuth();
   const [isValid, setIsValid] = useState(true);
+  const [error, setError] = useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -44,7 +45,7 @@ export function Login() {
       .then((response) => response.json())
       .then((result) => setToken(result))
       .then(() => setIsAuthenticated(true))
-      .catch((error) => console.log("error", error));
+      .catch((error) => setError("username or password is incorrect"));
 
     setUsername("");
     setPassword("");
@@ -92,6 +93,7 @@ export function Login() {
         />
       </div>
       {!isValid && <p>Please Enter username and password</p>}
+      {error && <p className="text-danger">{error}</p>}
 
       <div className="d-grid">
         <button type="submit" className="btn btn-primary">
